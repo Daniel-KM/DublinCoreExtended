@@ -2,18 +2,18 @@ Dublin Core Extended (plugin for Omeka)
 =======================================
 
 
-Summary
--------
-
-This plugin for [Omeka] adds the full set of Dublin Core properties to the
-existing Dublin Core element set, including element refinements and supplemental
-elements.
+[Dublin Core Extended] is a plugin for [Omeka] that adds the full set of
+Dublin Core properties to the existing Dublin Core element set, including
+element refinements and supplemental elements.
 
 See [DCMI Metadata Terms].
 
 An option allows to enlarge an advanced search on a base element of the
 Dublin Core to its refinements, if any. This option applies when sorting items
 too.
+
+When the plugin [OAI-PMH Repository] is installed, metadata can be exposed as
+Qualified Dublin Core.
 
 
 Installation
@@ -71,14 +71,15 @@ Current maintainers:
 Copyright
 ---------
 
-* Copyright Roy Rosenzweig Center for History and New Media, 2007-2013
-* Copyright Daniel Berthereau, 2014 (upgrade for [Mines ParisTech])
+* Copyright Roy Rosenzweig Center for History and New Media, 2007-2017
+* Copyright Daniel Berthereau, 2014-2017 (upgrade for [Mines ParisTech])
 
 
 [Omeka]: https://omeka.org
 [DCMI Metadata Terms]: http://dublincore.org/documents/dcmi-terms
 [Dublin Core Extended]: https://github.com/Omeka/plugin-DublinCoreExtended
+[OAI-PMH Repository]: https://omeka.org/add-ons/plugins/oai-pmh-repository/
 [Dublin Core Extended issues]: https://github.com/Omeka/plugin-DublinCoreExtended/issues
-[GNU/GPL]: https://www.gnu.org/licenses/gpl-3.0.html "GNU/GPL v3"
+[GNU/GPL]: https://www.gnu.org/licenses/gpl-3.0.html
 [Daniel-KM]: https://github.com/Daniel-KM "Daniel Berthereau"
 [Mines ParisTech]: http://bib.mines-paristech.fr

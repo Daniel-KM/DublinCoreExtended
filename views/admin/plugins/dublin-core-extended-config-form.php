@@ -17,10 +17,10 @@
     <p><?php
         if (plugin_is_active('OaiPmhRepository')):
             echo __('These options allow to select formats of metadata to expose via the the plugin %sOAI-PMH Repository%s.',
-                '<a href="http://omeka.org/add-ons/plugins/oai-pmh-repository/">', '</a>');
+                '<a href="https://omeka.org/add-ons/plugins/oai-pmh-repository/">', '</a>');
         else:
             echo __('These options allow to define formats of metadata to expose when the plugin %sOAI-PMH Repository%s is installed.',
-                '<a href="http://omeka.org/add-ons/plugins/oai-pmh-repository/">', '</a>');
+                '<a href="https://omeka.org/add-ons/plugins/oai-pmh-repository/">', '</a>');
         endif;
     ?></p>
     <div class="field">
