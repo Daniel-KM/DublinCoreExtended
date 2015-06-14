@@ -36,7 +36,7 @@ class DublinCoreExtended_Harvest_OaiDcq extends OaipmhHarvester_Harvest_Abstract
     /**
      * Actions to be carried out before the harvest of any items begins.
      */
-     protected function _beforeHarvest()
+    protected function _beforeHarvest()
     {
         $harvest = $this->_getHarvest();
 
@@ -62,7 +62,7 @@ class DublinCoreExtended_Harvest_OaiDcq extends OaipmhHarvester_Harvest_Abstract
     protected function _harvestRecord($record)
     {
         $itemMetadata = array(
-            'collection_id' => $this->_collection->id,
+            'collection_id' => isset($this->_collection->id) ? $this->_collection->id : 0,
             'public' => $this->getOption('public'),
             'featured' => $this->getOption('featured'),
         );
