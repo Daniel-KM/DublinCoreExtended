@@ -36,7 +36,7 @@ class DublinCoreExtended_Metadata_OaiDcq implements OaiPmhRepository_Metadata_Fo
     const DC_NAMESPACE_URI = 'http://purl.org/dc/elements/1.1/';
 
     /** XML namepace for DC element refinements*/
-    const DC_TERMS_NAMESPACE_URI = 'http://purl.org/dc/terms/';
+    const DCTERMS_NAMESPACE_URI = 'http://purl.org/dc/terms/';
 
     /**
      * Appends Dublin Core metadata.
@@ -54,7 +54,7 @@ class DublinCoreExtended_Metadata_OaiDcq implements OaiPmhRepository_Metadata_Fo
 
         $oai_dcq->setAttribute('xmlns:oai_dcq', self::METADATA_NAMESPACE);
         $oai_dcq->setAttribute('xmlns:dc', self::DC_NAMESPACE_URI);
-        $oai_dcq->setAttribute('xmlns:dcterms', self::DC_TERMS_NAMESPACE_URI);
+        $oai_dcq->setAttribute('xmlns:dcterms', self::DCTERMS_NAMESPACE_URI);
         $oai_dcq->declareSchemaLocation(self::METADATA_NAMESPACE, self::METADATA_SCHEMA);
 
         // Each of the 15 unqualified Dublin Core elements, in the order

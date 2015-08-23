@@ -25,7 +25,7 @@ class DublinCoreExtended_Harvest_OaiDcq extends OaipmhHarvester_Harvest_Abstract
 
     const OAI_DCQ_NAMESPACE = 'http://www.bl.uk/namespaces/oai_dcq/';
     const DUBLIN_CORE_NAMESPACE = 'http://purl.org/dc/elements/1.1/';
-    const DC_TERMS_NAMESPACE = 'http://purl.org/dc/terms/';
+    const DCTERMS_NAMESPACE = 'http://purl.org/dc/terms/';
 
     /**
      * Collection to insert items into.
@@ -78,7 +78,7 @@ class DublinCoreExtended_Harvest_OaiDcq extends OaipmhHarvester_Harvest_Abstract
         $dcqMetadata = $record
             ->metadata
             ->children(self::OAI_DCQ_NAMESPACE)
-            ->children(self::DC_TERMS_NAMESPACE);
+            ->children(self::DCTERMS_NAMESPACE);
 
         // Simple dc terms.
         $dcElementsName = array(

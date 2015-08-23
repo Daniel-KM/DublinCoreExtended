@@ -37,7 +37,7 @@ class DublinCoreExtended_Metadata_QDc implements OaiPmhRepository_Metadata_Forma
     const DC_NAMESPACE_URI = 'http://purl.org/dc/elements/1.1/';
 
     /** XML namepace for DC element refinements*/
-    const DC_TERMS_NAMESPACE_URI = 'http://purl.org/dc/terms/';
+    const DCTERMS_NAMESPACE_URI = 'http://purl.org/dc/terms/';
 
     /**
      * Appends Dublin Core metadata.
@@ -55,7 +55,7 @@ class DublinCoreExtended_Metadata_QDc implements OaiPmhRepository_Metadata_Forma
 
         $qdc->setAttribute('xmlns:qdc', self::METADATA_NAMESPACE);
         $qdc->setAttribute('xmlns:dc', self::DC_NAMESPACE_URI);
-        $qdc->setAttribute('xmlns:dcterms', self::DC_TERMS_NAMESPACE_URI);
+        $qdc->setAttribute('xmlns:dcterms', self::DCTERMS_NAMESPACE_URI);
         $qdc->declareSchemaLocation(self::METADATA_NAMESPACE, self::METADATA_SCHEMA);
 
         // Each of the 15 unqualified Dublin Core elements, in the order
