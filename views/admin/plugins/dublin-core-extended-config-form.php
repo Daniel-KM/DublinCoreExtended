@@ -1,11 +1,11 @@
 <fieldset id="fieldset-dublin-core-extended-form"><legend><?php echo __('Search'); ?></legend>
     <div class="field">
         <div class="two columns alpha">
-            <?php echo $view->formLabel('dublin_core_extended_refines',
+            <?php echo $this->formLabel('dublin_core_extended_refines',
                 __('Refines Items Search')); ?>
         </div>
         <div class="inputs five columns omega">
-            <?php echo $view->formCheckbox('dublin_core_extended_refines', true,
+            <?php echo $this->formCheckbox('dublin_core_extended_refines', true,
                 array('checked' => (boolean) get_option('dublin_core_extended_refines'))); ?>
             <p class="explanation">
                 <?php echo __('If selected, an advanced search on a element of the Dublin Core will be enlarged to its refinements, if any.'); ?>
@@ -25,11 +25,11 @@
     ?></p>
     <div class="field">
         <div class="two columns alpha">
-            <?php echo $view->formLabel('dublin_core_extended_oaipmh_unrefined_dc',
+            <?php echo $this->formLabel('dublin_core_extended_oaipmh_unrefined_dc',
                 __('Unrefined Dublin Core')); ?>
         </div>
         <div class="inputs five columns omega">
-            <?php echo $view->formCheckbox('dublin_core_extended_oaipmh_unrefined_dc', true,
+            <?php echo $this->formCheckbox('dublin_core_extended_oaipmh_unrefined_dc', true,
                 array('checked' => (boolean) get_option('dublin_core_extended_oaipmh_unrefined_dc'))); ?>
             <p class="explanation">
                 <?php echo __('If checked, refined elements will be merged into the 15 default elements, so they will be harvestable by default.'); ?>
