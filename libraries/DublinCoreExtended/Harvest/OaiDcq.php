@@ -106,7 +106,7 @@ class DublinCoreExtended_Harvest_OaiDcq extends OaipmhHarvester_Harvest_Abstract
             foreach ($elementData as $rawText) {
                 $text = trim($rawText);
                 $elementTexts['Dublin Core'][$element['label']][] =
-                    array('text' => (string) $text, 'html' => false);
+                    array('text' => (string) $text, 'html' => $this->_isXml($text));
             }
         }
 
@@ -115,5 +115,24 @@ class DublinCoreExtended_Harvest_OaiDcq extends OaipmhHarvester_Harvest_Abstract
             'elementTexts' => $elementTexts,
             'fileMetadata' => array(),
         );
+    }
+
+    /**
+     * Next function _isXml() will be removed when it will be integrated in
+     * the mainline OAI-PMH Harvester.
+     */
+
+    /**
+     * Check if a string is an Xml one.
+     *
+     * @param string $string
+     * @return boolean
+     */
+    protected function _isXml($string)
+    {
+        return strpos($string, '<') !== false
+            && strpos($string, '>') !== false
+            // A main tag is added to allow inner ones.
+            && (boolean) simplexml_load_string('<xml>' . $string . '</xml>', 'SimpleXMLElement', LIBXML_NOERROR | LIBXML_NOWARNING);
     }
 }
