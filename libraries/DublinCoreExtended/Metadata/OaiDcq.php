@@ -85,7 +85,8 @@ class DublinCoreExtended_Metadata_OaiDcq implements OaiPmhRepository_Metadata_Fo
 
             // Prepend the item type, if any.
             if ($elementName == 'type' && get_option('oaipmh_repository_expose_item_type')) {
-                if ($dcType = $item->getProperty('item_type_name')) {
+                $dcType = $item->getProperty('item_type_name');
+                if ($dcType) {
                     $oai_dcq->appendNewElement('dc:type', $dcType);
                 }
             }

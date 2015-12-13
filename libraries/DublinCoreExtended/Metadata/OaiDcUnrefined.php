@@ -79,7 +79,8 @@ class DublinCoreExtended_Metadata_OaiDcUnrefined implements OaiPmhRepository_Met
 
             // Prepend the item type, if any.
             if ($elementName == 'type' && get_option('oaipmh_repository_expose_item_type')) {
-                if ($dcType = $item->getProperty('item_type_name')) {
+                $dcType = $item->getProperty('item_type_name');
+                if ($dcType) {
                     $oai_dc->appendNewElement('dc:type', $dcType);
                 }
             }
