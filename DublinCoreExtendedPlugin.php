@@ -35,6 +35,7 @@ class DublinCoreExtendedPlugin extends Omeka_Plugin_AbstractPlugin
         'action_contexts',
         'items_browse_params',
         'oai_pmh_harvester_maps',
+        'oai_pmh_repository_metadata_formats',
     );
 
     /**
@@ -43,14 +44,17 @@ class DublinCoreExtendedPlugin extends Omeka_Plugin_AbstractPlugin
     protected $_options = array(
         'dublin_core_extended_refinements' => '',
         'dublin_core_extended_refines' => false,
+        'dublin_core_extended_oaipmh_unrefined_dc' => false,
+        'dublin_core_extended_oaipmh_oai_dcq' => true,
+        'dublin_core_extended_oaipmh_qdc' => false,
     );
 
     private $_elements;
 
     private $_dcElements = array(
-        'Title', 'Subject', 'Description', 'Creator', 'Source', 'Publisher',
-        'Date', 'Contributor', 'Rights', 'Relation', 'Format', 'Language',
-        'Type', 'Identifier', 'Coverage',
+        'Title', 'Creator', 'Subject', 'Description', 'Publisher',
+        'Contributor', 'Date', 'Type', 'Format', 'Identifier', 'Source',
+        'Language', 'Relation', 'Coverage', 'Rights',
     );
 
     public function __construct()
@@ -144,9 +148,10 @@ class DublinCoreExtendedPlugin extends Omeka_Plugin_AbstractPlugin
      *
      * @return void
      */
-    public function hookConfigForm()
+    public function hookConfigForm($args)
     {
-        echo get_view()->partial(
+        $view = get_view();
+        echo $view->partial(
             'plugins/dublin-core-extended-config-form.php'
         );
     }
@@ -159,8 +164,10 @@ class DublinCoreExtendedPlugin extends Omeka_Plugin_AbstractPlugin
     public function hookConfig($args)
     {
         $post = $args['post'];
-        foreach ($post as $key => $value) {
-            set_option($key, $value);
+        foreach ($this->_options as $optionKey => $optionValue) {
+            if (isset($post[$optionKey])) {
+                set_option($optionKey, $post[$optionKey]);
+            }
         }
     }
 
@@ -366,6 +373,35 @@ class DublinCoreExtendedPlugin extends Omeka_Plugin_AbstractPlugin
         );
 
         return $maps;
+    }
+
+    public function filterOaiPmhRepositoryMetadataFormats($formats)
+    {
+        if (get_option('dublin_core_extended_oaipmh_unrefined_dc')) {
+            $formats['oai_dc'] = array(
+                'class' => 'DublinCoreExtended_Metadata_OaiDcUnrefined',
+                'namespace' => DublinCoreExtended_Metadata_OaiDcUnrefined::METADATA_NAMESPACE,
+                'schema' => DublinCoreExtended_Metadata_OaiDcUnrefined::METADATA_SCHEMA,
+            );
+        }
+
+        if (get_option('dublin_core_extended_oaipmh_oai_dcq')) {
+            $formats['oai_dcq'] = array(
+                'class' => 'DublinCoreExtended_Metadata_OaiDcq',
+                'namespace' => DublinCoreExtended_Metadata_OaiDcq::METADATA_NAMESPACE,
+                'schema' => DublinCoreExtended_Metadata_OaiDcq::METADATA_SCHEMA,
+            );
+        }
+
+        if (get_option('dublin_core_extended_oaipmh_qdc')) {
+            $formats['qdc'] = array(
+                'class' => 'DublinCoreExtended_Metadata_QDc',
+                'namespace' => DublinCoreExtended_Metadata_QDc::METADATA_NAMESPACE,
+                'schema' => DublinCoreExtended_Metadata_QDc::METADATA_SCHEMA,
+            );
+        }
+
+        return $formats;
     }
 
     /**
